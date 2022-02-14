@@ -16,17 +16,17 @@ public class CardTrading {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
         
         // First line of inputs
-        String[] requirements = br.readLine().split(" ");
-        int numberOfCards = Integer.parseInt(requirements[0]);
-        int typesOfCards = Integer.parseInt(requirements[1]);
-        int requiredCombos = Integer.parseInt(requirements[2]);
+        String[] firstLine = br.readLine().split(" ");
+        int numAnthonyCards = Integer.parseInt(firstLine[0]);
+        int typesOfCards = Integer.parseInt(firstLine[1]);
+        int requiredCombos = Integer.parseInt(firstLine[2]);
 
         // Stores Anthony's cards in an array
         String[] cardsOwned = br.readLine().split(" ");
 
         // Counts the number of cards Anthony has and stores the data in a DAT (Correct)
         int[] cardsPerType = new int[typesOfCards+1];
-        for (int i = 0; i < numberOfCards; i++) {
+        for (int i = 0; i < numAnthonyCards; i++) {
             int number = Integer.parseInt(cardsOwned[i]);
             cardsPerType[number]+=1;
         }
@@ -54,10 +54,11 @@ public class CardTrading {
         // Selling and buying cards
         long result = 0;
         for (int i = 0; i < typesOfCards; i++) {
-            if (i < requiredCombos) {
-                result -= (2 - cardsPerType[i+1]) * cardCost.get(i).buyPrice;
-            } else {
-                result += cardsPerType[i+1] * cardCost.get(i).sellPrice;
+            Card card = cardCost.get(i);
+            if (i < requiredCombos) { // Buy
+                result -= (2 - cardsPerType[card.value]) * card.buyPrice;
+            } else { // Sell
+                result += cardsPerType[card.value] * card.sellPrice;
             }
         }
 
