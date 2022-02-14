@@ -24,23 +24,24 @@ public class CardTrading {
         // Stores Anthony's cards in an array
         String[] cardsOwned = br.readLine().split(" ");
 
-        // Adds the types of cards to ArrayList cards, can be accessed by indexing  by (value - 1)
+        // Adds the types of cards to ArrayList cards, can be accessed by indexing by value (correct)
         ArrayList<Pair> possibleCards = new ArrayList<Pair>();
-        for (int i = 0; i < typesOfCards; i++) {
+        possibleCards.add(0 , new Pair(0,0));
+        for (int i = 1; i <= typesOfCards; i++) {
             String[] card = br.readLine().split(" ");
-            possibleCards.add(new Pair(Long.parseLong(card[0]), Long.parseLong(card[1])));
+            possibleCards.add(i, new Pair(Long.parseLong(card[0]), Long.parseLong(card[1])));
         }
 
-        // Counts the number of cards Anthony has and stores the data in a DAT
-        int[] cardsPerType = new int[typesOfCards];
+        // Counts the number of cards Anthony has and stores the data in a DAT (Correct)
+        int[] cardsPerType = new int[typesOfCards+1];
         for (int i = 0; i < numberOfCards; i++) {
             int number = Integer.parseInt(cardsOwned[i]);
-            cardsPerType[number-1]+=1;
+            cardsPerType[number]+=1;
         }
 
-        // Calculate the cost of getting a combo for each card and sort them by the cost
+        // Calculate the cost of getting a combo for each card and sort them by the cost (Correct)
         ArrayList<Card> cardCost = new ArrayList<Card>();
-        for (int i = 0; i < typesOfCards; i++) {
+        for (int i = 1; i <= typesOfCards; i++) {
             long buyPrice = possibleCards.get(i).buyPrice;
             long sellPrice = possibleCards.get(i).sellPrice;
             int ownedCopies = cardsPerType[i];
@@ -53,18 +54,33 @@ public class CardTrading {
             } else {
                 cost = 2 * sellPrice;
             }
-            cardCost.add(new Card(i+1, cost));
+            cardCost.add(new Card(i, cost));
         }
         Collections.sort(cardCost);
 
-        // Calculate profit/loss
+        // Adding required cards for a proper deck (Correct)
+        ArrayList<Integer> requiredCards = new ArrayList<Integer>();
+        for (int i = 0; i < requiredCombos; i++) {
+            requiredCards.add(cardCost.get(i).value);
+        }
+
+        // Selling and buying cards
         long result = 0;
         
-
-        // Testing 
-        for (int i=0; i<typesOfCards; i++) {
-            System.out.println(cardCost.get(i).cost + " " + cardCost.get(i).value);
+        for (int i = 1; i < typesOfCards+1; i++) {
+            if (requiredCards.contains(i)) { // We want to buy until we hit 2 cards
+                if (cardsPerType[i] != 2) {
+                    result-= (2-cardsPerType[i]) * (possibleCards.get(i).buyPrice);
+                }
+            } else {
+                if (cardsPerType[i] != 0) { // Selling all cards
+                    result+= (cardsPerType[i]) * possibleCards.get(i).sellPrice;
+                }
+            }
         }
+
+        // Printing result
+        pw.println(result);
 
         // Close PrintWriter, end of program
         pw.close();
@@ -78,11 +94,6 @@ class Pair {
     Pair(long buyPrice, long sellPrice) {
         this.buyPrice = buyPrice;
         this.sellPrice = sellPrice;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Buying at %d, selling at %d", buyPrice, sellPrice);
     }
 }
 
