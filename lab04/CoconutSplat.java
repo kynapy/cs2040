@@ -1,5 +1,5 @@
 // Ang Ping Young (A0199498X)
-// Kattis Best:, My Timing:  
+// Kattis Best: 0.06s, My Timing: 0.07s  
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -24,6 +24,9 @@ public class CoconutSplat {
         }
         while (playerqueue.size() != 1) {
             int count = syllables;
+            while (count > playerqueue.size()) {
+                count-=playerqueue.size();
+            }
             for (int i = 1; i < syllables; i++) {
                 Player p = playerqueue.remove();
                 playerqueue.addLast(p);
