@@ -1,0 +1,14 @@
+11
+push_back 3 
+push_middle 4
+push_front 5
+push_middle 6
+push_middle 7
+push_middle 8
+push_middle 9
+get 0
+get 1
+get 2
+get 5
+
+// Answer : 5 3 7 6
