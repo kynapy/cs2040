@@ -35,10 +35,6 @@ public class Teque {
                 pw.println(teque.get(x).getElement());
             }
         }
-        //for (int i = 0; i < teque.size; i++) {
-            //TequeNode trav = teque.get(i);
-            //pw.println(trav.getElement());
-        //}
         pw.close();
     }
 }
@@ -57,55 +53,51 @@ class TequeImplt {
     }
 
     public void pushFront(TequeNode newNode) {
-        size++;
-        if ((size-1) == 0) {
+        if (size == 0) {
             head = newNode;
             middle = newNode;
             tail = newNode;
+            size++;
         } else {
             newNode.setNext(head);
             head.setPrev(newNode);
             head = newNode;
+            size++;
             middle = this.get((size + 1) / 2);
         }
     }
 
     public void pushBack(TequeNode newNode) {
-        size++;
-        if ((size-1) == 0) {
+        if (size == 0) {
             head = newNode;
             middle = newNode;
             tail = newNode;
+            size++;
         } else {
             newNode.setPrev(tail);
             tail.setNext(newNode);
             tail = newNode;
+            size++;
             middle = this.get((size + 1) / 2);
         }
     }
 
     public void pushMiddle(TequeNode newNode) {
-        size++;
-        if ((size-1) == 0) {
+        if (size == 0) {
             head = newNode;
             middle = newNode;
             tail = newNode;
+            size++;
         }
-        else if (size == 2) {
+        else if (size == 1) {
             pushBack(newNode);
         } else {
-            if (size % 2 == 0) {
-                newNode.setNext(middle.getNext());
-                newNode.setPrev(middle);
-                middle.getNext().setPrev(newNode);
-                middle.setNext(newNode);
-            } else {
-                newNode.setPrev(middle.getPrev());
-                newNode.setNext(middle);
-                middle.getPrev().setNext(newNode);
-                middle.setPrev(newNode);
-            }
-            middle = newNode;
+            newNode.setPrev(middle.getPrev());
+            newNode.setNext(middle);
+            middle.getPrev().setNext(newNode);
+            middle.setPrev(newNode);
+            size++;
+            middle = this.get((size + 1) / 2);
         }
     }
 
@@ -115,7 +107,7 @@ class TequeImplt {
         }
         else if (index == size-1) {
             return tail;
-        } else { // Lazy solution, haven't optimise
+        } else { // Lazy solution, haven't optimise            
             TequeNode trav = head;
             for (int i = 0; i < index; i++) {
                 trav = trav.getNext();
