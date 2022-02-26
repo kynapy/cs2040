@@ -1,0 +1,28 @@
+24
+push_back 1
+push_back 2
+push_back 3
+push_middle 4
+push_middle 5
+push_front 6
+push_back 7
+push_front 8
+push_middle 9
+push_middle 10
+push_front 11
+push_front 12
+get 0
+get 1
+get 2
+get 3
+get 4
+get 5
+get 6
+get 7
+get 8
+get 9
+get 10
+get 11
+
+
+// Answer: [12 11 8 6 1 2 9 10 5 4 3 7]

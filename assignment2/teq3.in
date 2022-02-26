@@ -1,4 +1,4 @@
-20
+26
 push_middle 1
 push_middle 2
 push_middle 3
@@ -9,6 +9,9 @@ push_middle 7
 push_middle 8
 push_middle 9
 push_middle 10
+push_middle 11
+push_middle 12
+push_middle 13
 get 0
 get 1
 get 2
@@ -19,3 +22,8 @@ get 6
 get 7
 get 8
 get 9
+get 10
+get 11
+get 12
+
+// Answer: 1 3 5 7 9 11 13 12 10 8 6 4 2

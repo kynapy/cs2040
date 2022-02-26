@@ -1,0 +1,13 @@
+10
+push_middle 6
+push_middle 6
+push_middle 6
+push_middle 6
+push_middle 6
+get 0
+get 1
+get 2
+get 3
+get 4
+
+// Answer: [6,6,6,6,6]
