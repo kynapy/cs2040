@@ -1,5 +1,5 @@
 // Ang Ping Young (A0199498X)
-// Kattis Best: 0., My Timing: 0. 
+// Kattis Best: 0.19s-0.51s, My Timing: 0.53s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
