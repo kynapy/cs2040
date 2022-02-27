@@ -14,7 +14,7 @@ public class NewTeque {
         
         // Main code
         int numOfCommands = Integer.parseInt(br.readLine());
-        NewTequeImplt teque = new NewTequeImplt(1000);
+        NewTequeImplt teque = new NewTequeImplt(1000000);
         for (int i = 0; i < numOfCommands; i++) {
             String[] input = br.readLine().split(" ");
             String command = input[0];
@@ -29,8 +29,23 @@ public class NewTeque {
                 teque.push_middle(x);
             } else {
                 pw.println(teque.get(x));
+                //pw.print(" ");
             }
         }
+        /* EASIER CHECKING OF RESULTS
+        pw.println();
+        pw.println();
+        pw.println("##### Array elements #####");
+        for (int i = 0; i < 30; i++) {
+            pw.print(teque.front[i]);
+            pw.print(" ");
+        }
+        pw.println();
+        for (int i = 0; i < 30; i++) {
+            pw.print(teque.back[i]);
+            pw.print(" ");
+        }
+        pw.println();*/
         pw.close();
     }
 }
@@ -59,7 +74,7 @@ class NewTequeImplt {
         start--;
         int frontSize = frontMid - start;
         int backSize = end - backMid;
-        if (frontSize - backSize > 2) {
+        if (frontSize - backSize > 1) {
             frontMid--;
             back[backMid] = front[frontMid];
             backMid--;
@@ -70,9 +85,9 @@ class NewTequeImplt {
     public void push_back(int input) {
         back[end] = input;
         end++;
-        int frontSize = frontMid - start;
-        int backSize = end - backMid;
-        if (backSize - frontSize > 2) {
+        int frontSize = frontMid - start - 1;
+        int backSize = end - backMid - 1;
+        if (backSize > frontSize) {
             backMid++;
             front[frontMid] = back[backMid];
             frontMid++;
@@ -81,8 +96,8 @@ class NewTequeImplt {
     }
 
     public void push_middle(int input) {
-        int frontSize = frontMid - start;
-        int backSize = end - backMid;
+        int frontSize = frontMid - start - 1;
+        int backSize = end - backMid - 1;
         if (frontSize <= backSize) {
             front[frontMid] = input;
             frontMid++;
@@ -92,23 +107,13 @@ class NewTequeImplt {
         }
     }
 
-    public int get(int index) {
-        int frontSize = frontMid - start;
-        if (index <= size) {
-            if (index < size/2 - start) {
-                return front[start + index + 1];
-            } else {
-                index -= size/2 - start;
-                return front[size/2 + index];
-            }
+    public int get(int index) { // (DONE)
+        int frontSize = frontMid - start - 1;
+        if (index + 1 <= frontSize) {
+            return front[start + index + 1];
         } else {
-            index -= frontSize;
-            if (index > (backMid - size/2)) {
-                index -= backMid - size/2;
-                return back[size/2 + index]; 
-            } else {
-                return back[backMid + index + 1];
-            }
+            index = index - frontSize;
+            return back[backMid + index + 1];
         }
     }
 }
