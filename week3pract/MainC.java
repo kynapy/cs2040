@@ -1,4 +1,3 @@
-// Ang Ping Young (A0199498X)
 // Kattis Time: 0.20s, Best: 0.06s
 import java.util.Scanner;
 

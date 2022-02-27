@@ -1,5 +1,3 @@
-// Ang Ping Young (A0199498X)
-
 import java.util.Scanner;
 
 public class MainC {

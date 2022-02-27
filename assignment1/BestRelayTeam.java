@@ -1,5 +1,3 @@
-// Ang Ping Young (A0199498X)
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
