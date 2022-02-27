@@ -1,0 +1,21 @@
+3
+4
+salmon: middle-upper-lower-upper class
+zebra: middle-middle-lower-upper
+lion: middle-lower-lower-upper
+tiger: middle-middle-lower-upper
+3
+elephant: middle-middle-upper-middle-upper-middle-upper
+panda: upper-upper-upper-middle-upper
+giraffe: lower-middle-upper-upper
+5
+kangaroo: middle
+desertcamel: lower
+apple: upper
+banana: upper-upper
+monkey: middle-lower-middle
+
+// Answers
+// 1. salmon zebra tiger lion
+// 2. giraffe panda elephant
+// 3. banana apple kangaroo monkey desertcamel
