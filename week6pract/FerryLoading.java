@@ -1,5 +1,5 @@
 // Kattis: Ferry Loading IV
-// A0199498X 
+// Best: 0.10s, My Timing: 0.20s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,11 +28,35 @@ public class FerryLoading {
             for (int j = 0; j < numOfCars; j++) {
                 String[] car = br.readLine().split(" ");
                 if (car[1].equals("left")) {
-                    left.add(Integer.parseInt(car[0]));
+                    left.offer(Integer.parseInt(car[0]));
                 } else {
-                    right.add(Integer.parseInt(car[0]));
+                    right.offer(Integer.parseInt(car[0]));
                 }
             }
+
+            // Additional stuff
+            int result = 0;
+            boolean ferryAtLeft = true;
+            
+            // Running the ferry
+            while ((left.peekFirst() != null) || (right.peekFirst() != null)) {
+                if (ferryAtLeft) {
+                    int totalLength = 0;
+                    while ((left.peekFirst() != null) && (totalLength + left.peekFirst() < ferryLength)) {
+                        totalLength += left.pop();
+                    }
+                    result++;
+                    ferryAtLeft = false;
+                } else {
+                    int totalLength = 0;
+                    while ((right.peekFirst() != null) && (totalLength + right.peekFirst() < ferryLength)) {
+                        totalLength += right.pop();
+                    }
+                    result++;
+                    ferryAtLeft = true;
+                }
+            }
+            pw.println(result);
         }
         pw.close();
     }
