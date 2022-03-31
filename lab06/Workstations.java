@@ -1,4 +1,5 @@
-// Kattis Best: 0.39s, My Timing: 0.87s
+// Kattis ID: workstations
+// Time taken: 0.87s, Fastest time: 0.39s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

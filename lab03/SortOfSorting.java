@@ -1,4 +1,5 @@
-// Time Taken: 0.25s, Kattis Best: 0.17s
+// Kattis ID: sortofsorting
+// Time taken: 0.25s, Fastest time: 0.17s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

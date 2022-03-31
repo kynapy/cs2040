@@ -1,4 +1,5 @@
-// Kattis Best: 0.08s, My Timing: 0.19s  
+// Kattis ID: conformity
+// Time taken: 0.19s, Fastest time: 0.08s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

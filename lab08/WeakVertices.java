@@ -1,4 +1,5 @@
-// Kattis Best: 0.07s, My Timing: 0.15s
+// Kattis ID: weakvertices
+// Time taken: 0.15s, Fastest time: 0.07s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
