@@ -11,7 +11,12 @@ public class MillionaireMadness {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
         
         // Main code
-
+        String firstLine[] = br.readLine().split(" ");
+        int length = Integer.parseInt(firstLine[0]);
+        int width = Integer.parseInt(firstLine[1]);
+        for (int i = 0; i < length; i++) {
+            
+        }
         pw.close();
     }
 }
