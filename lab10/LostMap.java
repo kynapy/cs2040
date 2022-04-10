@@ -1,4 +1,5 @@
-// Ang Ping Young (A0199498X)
+// Kattis ID: lostmap
+// Time taken: 0.24s, Fastest time: 2.67s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
