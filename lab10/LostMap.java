@@ -1,5 +1,5 @@
 // Kattis ID: lostmap
-// Time taken: 0.24s, Fastest time: 2.67s
+// Time taken: 2.67s, Fastest time: 0.24s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
