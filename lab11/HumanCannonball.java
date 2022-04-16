@@ -6,12 +6,9 @@ import java.io.PrintWriter;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.PriorityQueue;
 import java.util.HashSet;
 import java.util.Collections;
-=======
->>>>>>> 7c40cba2c10b94b5b1903287fb18b13090e2a05c
 
 public class HumanCannonball {
     public static void main(String arg[]) throws Exception {
@@ -26,11 +23,6 @@ public class HumanCannonball {
         Pair cannons[] = new Pair[numCannons+2];
         cannons[0] = new Pair(Double.parseDouble(curr[0]), Double.parseDouble(curr[1]));
         cannons[numCannons+1] = new Pair(Double.parseDouble(target[0]), Double.parseDouble(target[1]));
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 7c40cba2c10b94b5b1903287fb18b13090e2a05c
         // Reading in all the cannon coordinates
         for (int i = 1; i < numCannons+1; i++) {
             String cannon[] = br.readLine().split(" ");
@@ -38,7 +30,6 @@ public class HumanCannonball {
         }
 
         // Creating adjacency list
-<<<<<<< HEAD
         ArrayList<ArrayList<Edge>> adjlist = new ArrayList<ArrayList<Edge>>(numCannons+2);
         adjlist.add(0, new ArrayList<Edge>());
         for (int i = 1; i < numCannons + 2; i++) {
@@ -47,16 +38,6 @@ public class HumanCannonball {
         }
         for (int i = 1; i < numCannons + 2; i++) {
             adjlist.add(i, new ArrayList<Edge>());
-=======
-        ArrayList<ArrayList<Double>> adjlist = new ArrayList<ArrayList<Double>>(numCannons+1);
-        adjlist.add(0, new ArrayList<Double>());
-        for (int i = 1; i < numCannons + 2; i++) {
-            double distance = Pair.distanceFrom(cannons[0], cannons[i]);
-            adjlist.get(0).add(distance/5);
-        }
-        for (int i = 1; i < numCannons + 1; i++) {
-            adjlist.add(i, new ArrayList<Double>());
->>>>>>> 7c40cba2c10b94b5b1903287fb18b13090e2a05c
             for (int j = 0; j < numCannons + 2; j++) {
                 if (i == j) {
                     continue;
@@ -68,7 +49,6 @@ public class HumanCannonball {
                     } else {
                         timeTaken += distance / 5;
                     }
-<<<<<<< HEAD
                     adjlist.get(i).add(new Edge(j, timeTaken));
                 }
             }
@@ -96,14 +76,6 @@ public class HumanCannonball {
 
         // Printing results
         //pw.println(shortest[numCannons+1]);
-=======
-                    adjlist.get(i).add(timeTaken);
-                }
-            }
-        }
-        pw.println(adjlist);
-
->>>>>>> 7c40cba2c10b94b5b1903287fb18b13090e2a05c
         pw.close();
     }
 }
@@ -120,7 +92,6 @@ class Pair {
     static double distanceFrom(Pair from, Pair to) {
         return Math.sqrt(Math.pow(from.x - to.x, 2) + Math.pow(from.y - to.y, 2));
     }
-<<<<<<< HEAD
 }
 
 class Edge implements Comparable<Edge> {
@@ -142,6 +113,4 @@ class Edge implements Comparable<Edge> {
             return 1;
         }
     }
-=======
->>>>>>> 7c40cba2c10b94b5b1903287fb18b13090e2a05c
 }
