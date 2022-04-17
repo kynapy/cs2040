@@ -1,4 +1,5 @@
-// Ang Ping Young (A0199498X)
+// Kattis ID: humancannonball
+// Time taken: 0.08s, Fastest time: 0.07s
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,8 +8,6 @@ import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
-import java.util.HashSet;
-import java.util.Collections;
 
 public class HumanCannonball {
     public static void main(String arg[]) throws Exception {
@@ -17,12 +16,16 @@ public class HumanCannonball {
         PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 
         // Main code
-        String curr[] = br.readLine().split(" ");
+        // Reading in starting inputs
+        String start[] = br.readLine().split(" ");
         String target[] = br.readLine().split(" ");
         int numCannons = Integer.parseInt(br.readLine());
+        
+        // Array to store start, end and cannon coordinates 
         Pair cannons[] = new Pair[numCannons+2];
-        cannons[0] = new Pair(Double.parseDouble(curr[0]), Double.parseDouble(curr[1]));
+        cannons[0] = new Pair(Double.parseDouble(start[0]), Double.parseDouble(start[1]));
         cannons[numCannons+1] = new Pair(Double.parseDouble(target[0]), Double.parseDouble(target[1]));
+        
         // Reading in all the cannon coordinates
         for (int i = 1; i < numCannons+1; i++) {
             String cannon[] = br.readLine().split(" ");
@@ -62,20 +65,25 @@ public class HumanCannonball {
         pq.offer(new Edge(0, 0));
         for (int i = 1; i < numCannons+2; i++) {
             pq.offer(new Edge(i, INF));
+            shortest[i] = INF;
         }
+
+        // Running the Dijkstra's algorithm
         while (!pq.isEmpty()) {
             Edge curr = pq.poll();
-            if () {
-                for () {
-                    if () {
-
+            if (curr.weight == shortest[curr.to]) {
+                for (int i = 0; i < adjlist.get(curr.to).size(); i++) {
+                    Edge neighbour = adjlist.get(curr.to).get(i);
+                    if (shortest[neighbour.to] > shortest[curr.to] + neighbour.weight) {
+                        shortest[neighbour.to] = shortest[curr.to] + neighbour.weight;
+                        pq.offer(new Edge(neighbour.to, shortest[neighbour.to]));
                     }
                 }
             }
         }
 
         // Printing results
-        //pw.println(shortest[numCannons+1]);
+        pw.println(shortest[numCannons+1]);
         pw.close();
     }
 }
